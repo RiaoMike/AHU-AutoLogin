@@ -13,9 +13,13 @@ except ImportError:
     os.system('pip install -i https://pypi.mirrors.ustc.edu.cn/simple/ selenium')
     from selenium import webdriver
     from selenium.webdriver.common.by import By
+    from selenium.webdriver.chrome.service import Service
 
-account = 'A02014212'
-password = 'xrloveMATHS0709'
+# your account and password for campus
+account = 'A0xxxxxxx'
+password = '123456xxxx'
+chrome_path = '/path/to/your/chromedriver'
+service = Service(chrome_path)
 
 # 获取本地DHCP服务器分配的内网ip
 ipaddr = socket.gethostbyname(socket.gethostname())
@@ -26,7 +30,7 @@ url = 'http://172.16.253.3/a79.htm?wlanuserip=' + ipaddr + '&wlanacname=&wlanaci
 option = webdriver.ChromeOptions()
 option.add_argument("--headless")
 option.add_argument('--disable-gpu')
-browser = webdriver.Chrome('chromedriver', chrome_options=option)
+browser = webdriver.Chrome(service=service, chrome_options=option)
 browser.get(url)
 
 browser.minimize_window()
