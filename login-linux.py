@@ -47,3 +47,6 @@ inputpassword.send_keys(password)
 submitbutton.submit()
 
 browser.quit()
+
+# test Internet
+os.system("./net-test.sh")
